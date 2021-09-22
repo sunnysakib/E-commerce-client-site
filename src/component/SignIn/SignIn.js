@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { googleSignIn } from "../../firebase/firebase.utils";
+import { auth, googleSignIn } from "../../firebase/firebase.utils";
 
 import CustomButton from "../CustomButton/CustomButton";
 import FormInput from "../FormInput/FormInput";
@@ -15,9 +15,15 @@ class SignIn extends Component {
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit =async (e) => {
     e.preventDefault();
-    this.setState({ email: "", password: "" });
+    const {email, password} = this.state;
+    try{
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: "", password: "" });
+    }catch(e){
+      console.log("error:"+ e);
+    }
   };
 
   handleChange = (e) => {
@@ -49,7 +55,7 @@ class SignIn extends Component {
           />
 
           <div className="buttons">
-            <CustomButton type="button">SIGN IN</CustomButton>
+            <CustomButton type="submit">SIGN IN</CustomButton>
             <CustomButton onClick={googleSignIn} isGoogleSignIn>
               SIGN IN WITH GOOGLE
             </CustomButton>
