@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
 import HomePage from "./pages/Homepage/HomePage";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import ShopPage from "./pages/ShopPage/ShopPage";
 import Header from "./component/Header/Header";
 import SignInAndSignUpPage from "./pages/SignInAndSignUpPage/SignInAndSignUpPage";
@@ -37,21 +37,32 @@ class App extends React.Component {
     this.unsubscribeFromAuth();
   }
   render() {
+    const { currentUser } = this.props;
     return (
       <Router>
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
-          <Route exact path="/login" component={SignInAndSignUpPage} />
+          <Route
+            exact
+            path="/login"
+            render={() =>
+              currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+            }
+          />
         </Switch>
       </Router>
     );
   }
 }
 
+const mapStateToProps = (state) =>({
+  currentUser: state.user.currentUser,
+})
+
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
