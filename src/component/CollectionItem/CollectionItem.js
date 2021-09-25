@@ -15,7 +15,7 @@ const CollectionItem = ({item , addItem}) => {
       </div>
       <CustomButton inverted onClick={()=> addItem(item)}>Add to Cart</CustomButton>
     </div>
-  );
+  ); 
 };
 
 const mapDispatchToProps = dispatch => ({
