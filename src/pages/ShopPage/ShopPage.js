@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import './ShopPage.scss';
-import SHOP_DATA from '../../Data/shop-data';
 import CollectionPreview from '../../component/CollectionPreview/CollectionPreview';
+import { connect } from 'react-redux';
+import { selectCollections } from '../../redux/shop/shop.selector';
 
-class ShopPage extends Component {
-    constructor(){
-        super();
-        this.state = {
-            collections: SHOP_DATA
-        }
-    }
-    render() {
-        const { collections} = this.state;
-        return (
+const ShopPage = ({collections}) => {
+     return (
             <div className="shop-page">
                {
                    collections.map(({id, ...otherProps})=> (
@@ -22,6 +15,9 @@ class ShopPage extends Component {
             </div>
         );
     }
-}
 
-export default ShopPage;
+    const mapStateToProps = (state) => ({
+        collections: selectCollections(state)
+    })
+
+export default connect(mapStateToProps)(ShopPage);
