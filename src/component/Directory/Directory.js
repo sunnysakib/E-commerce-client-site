@@ -12,12 +12,13 @@ const Directory = ({ sections }) => {
           <MenuItem key={id} {...otherProps} />
         ))}
       </div>
+      <div className="banner"><p>Cash on Delivery in over 25 Districts</p></div>
     </div>
   );
 };
 
-const mapStateToProps = state => ({ 
-  sections: selectDirectorySections(state)
-})
+const mapStateToProps = (state) => ({
+  sections: selectDirectorySections(state),
+});
 
 export default connect(mapStateToProps)(Directory);

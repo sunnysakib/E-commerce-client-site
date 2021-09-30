@@ -1,16 +1,17 @@
 .collection-preview {
-    width: 100%;  
-    display: flex;
+      display: flex;
       flex-direction: column;
       margin-bottom: 30px;
     
       .title {
         font-size: 28px;
         margin-bottom: 25px;
+        cursor: pointer;
+        max-width: 125px;
       }
     
       .preview {
-        width: 100%;
+        
         display: flex;
         justify-content: space-between;
         

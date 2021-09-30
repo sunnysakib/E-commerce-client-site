@@ -1,0 +1,70 @@
+.footer {
+  .payment-logo {
+    width: 100%;
+    margin-top: 80px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .footer-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    justify-content: center;
+
+    .page-info {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      font-size: 18px;
+
+      span:first-child {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 12px;
+      }
+    }
+    .help-info {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      font-size: 18px;
+      span:first-child {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 12px;
+      }
+    }
+
+    .contact-info {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      font-size: 18px;
+
+      span:first-child {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  .copyright{
+      border-top: 1px solid rgba(122,122,122,0.13);
+      margin-top: 50px;
+      padding-top: 30px;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      font-weight: 500;
+      font-size: 18px;
+      justify-content: center;
+
+      div{
+        margin-left: 10px
+      }
+  }
+}

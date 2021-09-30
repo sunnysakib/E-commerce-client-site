@@ -10,6 +10,7 @@ import { auth, createUserProfileDocuments } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.action";
 import { connect } from "react-redux";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import Footer from "./component/Footer/Footer";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -54,6 +55,7 @@ class App extends React.Component {
           />
           <Route path="/checkout" component={CheckoutPage}/>
         </Switch>
+        <Footer/>
       </Router>
     );
   }
