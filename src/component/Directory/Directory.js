@@ -2,18 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import { selectDirectorySections } from "../../redux/directory/directory.selectors";
 import MenuItem from "../MenuItem/MenuItem";
-import "./Directory.scss";
+import { DirectoryBanner, DirectoryContainer } from "./Directory.styles";
 
 const Directory = ({ sections }) => {
   return (
-    <div>
-      <div className="directory-menu">
-        {sections.map(({ id, ...otherProps }) => (
-          <MenuItem key={id} {...otherProps} />
-        ))}
-      </div>
-      <div className="banner"><p>Cash on Delivery in over 25 Districts</p></div>
-    </div>
+    <DirectoryContainer>
+      {sections.map(({ id, ...otherProps }) => (
+        <MenuItem key={id} {...otherProps} />
+      ))}
+      <DirectoryBanner>
+        <p>Cash on Delivery in over 25 Districts</p>
+      </DirectoryBanner>
+    </DirectoryContainer>
   );
 };
 

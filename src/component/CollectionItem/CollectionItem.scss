@@ -5,6 +5,17 @@
     height: 350px;
     align-items: center;
     position: relative;
+
+      &:hover {
+      .image{
+        opacity: 0.8;
+      }
+
+      .custom-button{
+        opacity: 0.8;
+        display: block;
+      }
+    }
   
     .image {
       width: 100%;
@@ -39,16 +50,7 @@
       border: none;
     }
 
-    &:hover {
-      .image{
-        opacity: 0.8;
-      }
-
-      .custom-button{
-        opacity: 0.8;
-        display: block;
-      }
-    }
+  
 
   }
   

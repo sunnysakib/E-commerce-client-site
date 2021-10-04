@@ -1,8 +1,12 @@
 import React from "react";
 import FormInput from "../FormInput/FormInput";
 import "./SignUp.scss";
-import { auth, createUserProfileDocuments } from "../../firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocuments,
+} from "../../firebase/firebase.utils";
 import CustomButton from "../CustomButton/CustomButton";
+import { SignUpContainer, SignUpTitle } from "./SignUp.styles";
 
 class SignUp extends React.Component {
   constructor() {
@@ -12,11 +16,11 @@ class SignUp extends React.Component {
       displayName: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
     };
   }
 
-  handleSubmit = async event => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const { displayName, email, password, confirmPassword } = this.state;
 
@@ -32,30 +36,29 @@ class SignUp extends React.Component {
       );
       await createUserProfileDocuments(user, { displayName });
 
-      this.setState({ 
+      this.setState({
         displayName: "",
         email: "",
         password: "",
         confirmPassword: "",
       });
-      
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
   };
 
-  handleChange = event => {
-      const {name, value} = event.target;
-      this.setState({ [name]: value })
-  }
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
     return (
-      <div className="sign-up">
-        <h2 className="title">I do not have an account</h2>
+      <SignUpContainer>
+        <SignUpTitle>I do not have an account</SignUpTitle>
         <span>Sign up with your email and password</span>
-        <form className="sign-up-form" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <FormInput
             type="text"
             name="displayName"
@@ -90,7 +93,7 @@ class SignUp extends React.Component {
           />
           <CustomButton type="submit">SIGN UP</CustomButton>
         </form>
-      </div>
+      </SignUpContainer>
     );
   }
 }
